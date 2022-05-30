@@ -25,7 +25,7 @@ function getReviewsFromLS() {
 
 function getOptionsCluster(coords) {
   const clusterOjects = [];
-  for (const review of reviews) {
+  for (const review of getReviewsFromLS()) {
     if (JSON.stringify(review.coords) === JSON.stringify(coords)) {
       const geoObj = new ymaps.GeoObject({
         geometry: {type: 'Point' , coordinates: coords}
@@ -57,7 +57,7 @@ function addCluster(map, coords) {
 
 function getReviewList(coords) {
   var reviewListHTML = '';
-  for (const review of reviews) {
+  for (const review of getReviewsFromLS()) {
     if (JSON.stringify(review.coords) === JSON.stringify(coords)) {
       reviewListHTML += `
         <div class="review">
